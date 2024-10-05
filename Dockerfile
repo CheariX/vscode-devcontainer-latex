@@ -31,4 +31,5 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # RUN pip3 install Pygments
-RUN rm -rf /var/lib/apt/lists/*
+
+ENV JAVA_HOME /usr/lib/jvm/default-java

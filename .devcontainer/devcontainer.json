@@ -1,0 +1,43 @@
+{
+  "name": "LaTeX",
+  // "dockerFile": "Dockerfile",
+  "image": "ghcr.io/chearix/vscode-devcontainer-latex:main",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "files.trimTrailingWhitespace": true,
+        "java.home": "/usr/lib/jvm/default-java",
+        "latex-workshop.synctex.afterBuild.enabled": true,
+        "latex-workshop.view.pdf.trim": 1,
+        "latex-workshop.view.pdf.viewer": "tab",
+        "ltex.java.path": "/usr/lib/jvm/default-java",
+        "ltex.language": "en-US",
+        "ltex.latex.commands": {
+          "\\lstinput{}": "ignore",
+          "\\lstinline||": "ignore",
+          "\\lstinline{}": "ignore",
+          "\\moderncvtheme{}": "ignore"
+        },
+        "telemetry.enableTelemetry": false,
+        "todo-tree.regex.regexCaseSensitive": false,
+      },
+      "extensions": [
+        "Gruntfuggly.todo-tree",
+        "james-yu.latex-workshop",
+        "ltex-plus.vscode-ltex-plus",
+        "tecosaur.latex-utilities"
+      ]
+    }
+  },
+  "features": {
+    // "ghcr.io/devcontainers/features/rust:1": {},
+    // "ghcr.io/lee-orr/rusty-dev-containers/cargo-binstall:0": { "packages": "tex-fmt"}
+  },
+  "remoteUser": "vscode"
+  // Podman / Fedora Silverblue fix
+  // "containerUser": "vscode",
+  // "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind,Z",
+  // "runArgs": [
+  //   "--userns=keep-id"
+  // ]
+}

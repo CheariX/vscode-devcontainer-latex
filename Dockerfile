@@ -20,6 +20,7 @@ RUN apt-get update \
         pandoc \
         procps \
         python3-pip \
+        python3-pygments \
         texlive \
         texlive-bibtex-extra \
         texlive-extra-utils \

@@ -28,7 +28,8 @@ RUN apt-get update \
         texlive-lang-german \
         texlive-latex-extra \
         texlive-science \
-        texlive-xetex
+        texlive-xetex \
+    && rm -rf /var/lib/apt/lists/*
 
 # RUN pip3 install Pygments
 RUN rm -rf /var/lib/apt/lists/*

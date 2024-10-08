@@ -1,10 +1,14 @@
 {
   "name": "LaTeX",
-  // "dockerFile": "Dockerfile",
-  "image": "ghcr.io/chearix/vscode-devcontainer-latex:main",
+  "dockerFile": "../Dockerfile",
+  // "image": "ghcr.io/chearix/vscode-devcontainer-latex:main",
   "customizations": {
     "vscode": {
       "settings": {
+        "commentAnchors.tags.matchPrefix": [
+          "#",
+          "%"
+        ],
         "files.trimTrailingWhitespace": true,
         "java.home": "/usr/lib/jvm/default-java",
         "latex-workshop.synctex.afterBuild.enabled": true,
@@ -42,12 +46,10 @@
           "\\lstinline{}": "ignore",
           "\\moderncvtheme{}": "ignore"
         },
-        "telemetry.enableTelemetry": false,
-        "todo-tree.regex.regexCaseSensitive": false,
-        "todo-tree.regex.regex": "%\\s*($TAGS)",
+        "telemetry.enableTelemetry": false
       },
       "extensions": [
-        "Gruntfuggly.todo-tree",
+        "ExodiusStudios.comment-anchors",
         "james-yu.latex-workshop",
         "ltex-plus.vscode-ltex-plus",
         "tecosaur.latex-utilities"

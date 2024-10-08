@@ -1,4 +1,5 @@
-FROM mcr.microsoft.com/vscode/devcontainers/base:debian
+#FROM mcr.microsoft.com/vscode/devcontainers/base:debian
+FROM mcr.microsoft.com/devcontainers/base:ubuntu-24.04
 
 RUN apt-get update \
     && export DEBIAN_FRONTEND=noninteractive \
@@ -17,6 +18,7 @@ RUN apt-get update \
         locales \
         make \
         neovim \
+        openjdk-21-jdk \
         pandoc \
         procps \
         python3-pip \
@@ -30,7 +32,5 @@ RUN apt-get update \
         texlive-science \
         texlive-xetex \
     && rm -rf /var/lib/apt/lists/*
-
-# RUN pip3 install Pygments
 
 ENV JAVA_HOME /usr/lib/jvm/default-java

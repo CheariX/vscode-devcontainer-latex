@@ -33,4 +33,4 @@ RUN apt-get update \
         texlive-xetex \
     && rm -rf /var/lib/apt/lists/*
 
-ENV JAVA_HOME /usr/lib/jvm/default-java
+ENV JAVA_HOME=/usr/lib/jvm/default-java

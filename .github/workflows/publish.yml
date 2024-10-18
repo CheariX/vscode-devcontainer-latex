@@ -9,6 +9,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  TEST_TAG: ${{ github.repository }}:test
 
 jobs:
   build-and-push:
@@ -40,12 +41,18 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      - name: Verify LaTeX compilation
+      - name: Build and export to Docker
+        uses: docker/build-push-action@v6
+        with:
+          load: true
+          tags: ${{ env.TEST_TAG }}
+        
+      - name: Test LaTeX compilation
         run: |
-          docker run --rm -v ${{ github.workspace }}:/workspace ${{ steps.meta.outputs.tags }} latexmk -shell-escape -synctex=1 -interaction=nonstopmode -file-line-error -pdf -outdir=/workspace /workspace/example.tex
+          docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.TEST_TAG }} latexmk -shell-escape -synctex=1 -interaction=nonstopmode -file-line-error -pdf -outdir=/workspace /workspace/example.tex
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: true

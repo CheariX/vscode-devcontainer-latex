@@ -40,6 +40,10 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
+      - name: Verify LaTeX compilation
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/workspace ${{ steps.meta.outputs.tags }} latexmk -shell-escape -synctex=1 -interaction=nonstopmode -file-line-error -pdf -outdir=/workspace /workspace/example.tex
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:

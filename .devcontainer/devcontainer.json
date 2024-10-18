@@ -38,7 +38,8 @@
         ],
         "latex-workshop.view.pdf.trim": 1,
         "latex-workshop.view.pdf.viewer": "tab",
-        "ltex.java.path": "/usr/lib/jvm/default-java",
+        "ltex.ltex-ls.path": "/opt/ltex/",
+        // "ltex.java.path": "/usr/lib/jvm/default-java",
         "ltex.language": "en-US",
         "ltex.latex.commands": {
           "\\lstinput{}": "ignore",

@@ -35,21 +35,21 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Extract metadata (tags, labels) for Docker
-      #   id: meta
-      #   uses: docker/metadata-action@v5
-      #   with:
-      #     images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-
-      - name: Build and export to Docker
-        uses: docker/build-push-action@v6
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
         with:
-          load: true
-          tags: ${{ env.TEST_TAG }}
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      # - name: Build and export to Docker
+      #   uses: docker/build-push-action@v6
+      #   with:
+      #     load: true
+      #     tags: ${{ env.TEST_TAG }}
         
-      - name: Test LaTeX compilation
-        run: |
-          docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.TEST_TAG }} latexmk -shell-escape -synctex=1 -interaction=nonstopmode -file-line-error -pdf -outdir=/workspace /workspace/example.tex
+      # - name: Test LaTeX compilation
+      #   run: |
+      #     docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.TEST_TAG }} latexmk -shell-escape -synctex=1 -interaction=nonstopmode -file-line-error -pdf -outdir=/workspace /workspace/example.tex
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
